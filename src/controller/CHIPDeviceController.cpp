@@ -801,6 +801,7 @@ CHIP_ERROR DeviceCommissioner::PairDevice(NodeId remoteDeviceId, RendezvousParam
     Transport::PeerAddress peerAddress = Transport::PeerAddress::UDP(Inet::IPAddress::Any);
 
     Messaging::ExchangeContext * exchangeCtxt = nullptr;
+    Optional<SessionHandle> session;
 
     uint16_t keyID = 0;
 
@@ -853,9 +854,8 @@ CHIP_ERROR DeviceCommissioner::PairDevice(NodeId remoteDeviceId, RendezvousParam
 
     mIsIPRendezvous = (params.GetPeerAddress().GetTransportType() != Transport::Type::kBle);
 
-    err = mPairingSession.MessageDispatch().Init(mTransportMgr);
+    err = mPairingSession.MessageDispatch().Init(mSessionMgr);
     SuccessOrExit(err);
-    mPairingSession.MessageDispatch().SetPeerAddress(params.GetPeerAddress());
 
     device->Init(GetControllerDeviceInitParams(), mListenPort, remoteDeviceId, peerAddress, fabric->GetFabricIndex());
 
@@ -881,7 +881,10 @@ CHIP_ERROR DeviceCommissioner::PairDevice(NodeId remoteDeviceId, RendezvousParam
         }
     }
 #endif
-    exchangeCtxt = mExchangeMgr->NewContext(SessionHandle::TemporaryUnauthenticatedSession(), &mPairingSession);
+    session = mSessionMgr->CreateUnauthenticatedSession(params.GetPeerAddress());
+    VerifyOrExit(session.HasValue(), CHIP_ERROR_NO_MEMORY);
+
+    exchangeCtxt = mExchangeMgr->NewContext(session.Value(), &mPairingSession);
     VerifyOrExit(exchangeCtxt != nullptr, err = CHIP_ERROR_INTERNAL);
 
     err = mIDAllocator.Allocate(keyID);
