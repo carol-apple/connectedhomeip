@@ -69,7 +69,7 @@ CHIP_ERROR NotifyImageHandler(int argc, char ** argv)
     const EndpointId providerEndpointId = static_cast<EndpointId>(strtoul(argv[2], nullptr, 10));
 
     GetRequestorInstance()->TestModeSetProviderParameters(providerNodeId, fabricIndex, providerEndpointId);
-    PlatformMgr().ScheduleWork([](intptr_t) { GetRequestorInstance()->NotifyUpdateApplied(); });
+    PlatformMgr().ScheduleWork([](intptr_t) { GetRequestorInstance()->NotifyUpdateApplied(0); });
     return CHIP_NO_ERROR;
 }
 
