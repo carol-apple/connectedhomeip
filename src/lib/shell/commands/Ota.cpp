@@ -16,6 +16,7 @@
  */
 
 #include <app/clusters/ota-requestor/OTARequestorInterface.h>
+#include <app/clusters/ota-requestor/ota-requestor-app.h>
 #include <lib/shell/Commands.h>
 #include <lib/shell/Engine.h>
 #include <lib/shell/commands/Help.h>
