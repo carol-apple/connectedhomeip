@@ -15854,7 +15854,6 @@ public:
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("nodeId2", 0, UINT64_MAX, &mNodeId2);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("payload", &mPayload);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
@@ -15870,7 +15869,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId;
     chip::Optional<chip::NodeId> mNodeId2;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<chip::CharSpan> mPayload;
     chip::Optional<uint16_t> mTimeout;
 
@@ -15996,7 +15994,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 1: {
             LogStep(1, "TH_CR1 starts a commissioning process with DUT_CE");
@@ -16085,7 +16083,6 @@ public:
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("nodeId2", 0, UINT64_MAX, &mNodeId2);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("payload", &mPayload);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
@@ -16101,7 +16098,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId;
     chip::Optional<chip::NodeId> mNodeId2;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<chip::CharSpan> mPayload;
     chip::Optional<uint16_t> mTimeout;
 
@@ -16222,7 +16218,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 1: {
             LogStep(1, "TH_CR1 starts a commissioning process with DUT_CE");
@@ -16415,7 +16411,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot(mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U);
+            return Reboot();
         }
         case 1: {
             LogStep(1, "TH_CR1 starts a commissioning process with DUT_CE");
@@ -16554,7 +16550,6 @@ public:
         AddArgument("nodeId2", 0, UINT64_MAX, &mNodeId2);
         AddArgument("nodeId3", 0, UINT64_MAX, &mNodeId3);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("payload", &mPayload);
     }
 
@@ -16569,7 +16564,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId2;
     chip::Optional<chip::NodeId> mNodeId3;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<chip::CharSpan> mPayload;
 
     chip::EndpointId GetEndpoint(chip::EndpointId endpoint) { return mEndpoint.HasValue() ? mEndpoint.Value() : endpoint; }
@@ -16672,7 +16666,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot(mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U);
+            return Reboot();
         }
         case 1: {
             LogStep(1, "TH_CR1 starts a commissioning process with DUT_CE");
@@ -16964,7 +16958,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot(mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U);
+            return Reboot();
         }
         case 1: {
             LogStep(1, "TH_CR1 starts a commissioning process with DUT_CE");
@@ -18792,7 +18786,6 @@ public:
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("cluster", &mCluster);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
 
@@ -18807,7 +18800,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId;
     chip::Optional<chip::CharSpan> mCluster;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<uint16_t> mTimeout;
 
     chip::EndpointId GetEndpoint(chip::EndpointId endpoint) { return mEndpoint.HasValue() ? mEndpoint.Value() : endpoint; }
@@ -18988,7 +18980,7 @@ private:
         case 4: {
             LogStep(4, "Power off DUT");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 5: {
             LogStep(5, "Wait for the commissioned device to be retrieved");
@@ -19009,7 +19001,7 @@ private:
         case 8: {
             LogStep(8, "Power off DUT");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 9: {
             LogStep(9, "Wait for the commissioned device to be retrieved");
@@ -19030,7 +19022,7 @@ private:
         case 12: {
             LogStep(12, "Power off DUT");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 13: {
             LogStep(13, "Wait for the commissioned device to be retrieved");
@@ -19044,7 +19036,7 @@ private:
         case 15: {
             LogStep(15, "Power off DUT");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 16: {
             LogStep(16, "Wait for the commissioned device to be retrieved");
@@ -19064,7 +19056,7 @@ private:
         case 19: {
             LogStep(19, "Power off DUT");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 20: {
             LogStep(20, "Wait for the commissioned device to be retrieved");
@@ -19083,7 +19075,7 @@ private:
         case 23: {
             LogStep(23, "Power off DUT");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 24: {
             LogStep(24, "Wait for the commissioned device to be retrieved");
@@ -22159,7 +22151,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 1: {
             LogStep(1, "Wait for the commissioned device to be retrieved");
@@ -22263,7 +22255,7 @@ private:
         case 18: {
             LogStep(18, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 19: {
             LogStep(19, "Log commands");
@@ -30059,7 +30051,6 @@ public:
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("cluster", &mCluster);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
 
@@ -30074,7 +30065,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId;
     chip::Optional<chip::CharSpan> mCluster;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<uint16_t> mTimeout;
 
     chip::app::DataModel::Nullable<chip::Percent100ths> attrCurrentPositionLiftPercent100ths;
@@ -30279,7 +30269,7 @@ private:
         case 12: {
             LogStep(12, "3c: reboot/restart the DUT");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 13: {
             LogStep(13, "3d: Wait for the commissioned device to be retrieved");
@@ -39920,7 +39910,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 1: {
             LogStep(1, "Wait for the commissioned device to be retrieved");
@@ -40043,7 +40033,7 @@ private:
         case 21: {
             LogStep(21, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 22: {
             LogStep(22, "Wait for the commissioned device to be retrieved");
@@ -42840,7 +42830,6 @@ public:
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("cluster", &mCluster);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
 
@@ -42855,7 +42844,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId;
     chip::Optional<chip::CharSpan> mCluster;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<uint16_t> mTimeout;
 
     uint8_t currentModeBeforeToggle;
@@ -43213,7 +43201,7 @@ private:
         case 25: {
             LogStep(25, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 26: {
             LogStep(26, "Wait for the commissioned device to be retrieved");
@@ -43233,7 +43221,7 @@ private:
         case 29: {
             LogStep(29, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 30: {
             LogStep(30, "Wait for the commissioned device to be retrieved");
@@ -43363,7 +43351,7 @@ private:
 class TestSystemCommandsSuite : public TestCommand
 {
 public:
-    TestSystemCommandsSuite(CredentialIssuerCommands * credsIssuerConfig) : TestCommand("TestSystemCommands", 20, credsIssuerConfig)
+    TestSystemCommandsSuite(CredentialIssuerCommands * credsIssuerConfig) : TestCommand("TestSystemCommands", 22, credsIssuerConfig)
     {
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("cluster", &mCluster);
@@ -43478,6 +43466,14 @@ private:
             VerifyOrReturn(CheckValue("status", chip::to_underlying(status.mStatus), 0));
             shouldContinue = true;
             break;
+        case 20:
+            VerifyOrReturn(CheckValue("status", chip::to_underlying(status.mStatus), 0));
+            shouldContinue = true;
+            break;
+        case 21:
+            VerifyOrReturn(CheckValue("status", chip::to_underlying(status.mStatus), 0));
+            shouldContinue = true;
+            break;
         default:
             LogErrorOnFailure(ContinueOnChipMainThread(CHIP_ERROR_INVALID_ARGUMENT));
         }
@@ -43501,96 +43497,106 @@ private:
         case 1: {
             LogStep(1, "Stop the default accessory");
             SetIdentity(kIdentityAlpha);
-            return Stop("default");
+            return Stop();
         }
         case 2: {
             LogStep(2, "Start the default accessory with no command line options");
             SetIdentity(kIdentityAlpha);
-            return Start("default");
+            return Start();
         }
         case 3: {
-            LogStep(3, "Stop the default accessory");
+            LogStep(3, "Stop the default accessory by key");
             SetIdentity(kIdentityAlpha);
             return Stop("default");
         }
         case 4: {
             LogStep(4, "Start the default accessory with discriminator command line option");
             SetIdentity(kIdentityAlpha);
-            return Start("default", 1111);
+            return Start(1111);
         }
         case 5: {
             LogStep(5, "Stop the default accessory");
             SetIdentity(kIdentityAlpha);
-            return Stop("default");
+            return Stop();
         }
         case 6: {
             LogStep(6, "Start the default accessory with discriminator and port command line options");
             SetIdentity(kIdentityAlpha);
-            return Start("default", 1111, 5560);
+            return Start(1111, 5560);
         }
         case 7: {
             LogStep(7, "Stop the default accessory");
             SetIdentity(kIdentityAlpha);
-            return Stop("default");
+            return Stop();
         }
         case 8: {
             LogStep(8, "Start the default accessory with all command line options");
             SetIdentity(kIdentityAlpha);
-            return Start("default", 1111, 5560, "/tmp/chip_kvs_default");
+            return Start(1111, 5560, "/tmp/chip_kvs_default");
         }
         case 9: {
-            LogStep(9, "Stop the second accessory");
+            LogStep(9, "Stop the default accessory");
             SetIdentity(kIdentityAlpha);
-            return Stop("chip-lock-app");
+            return Stop();
         }
         case 10: {
-            LogStep(10, "Start a second accessory with all command line options");
+            LogStep(10, "Start the default accessory by key with all command line options");
             SetIdentity(kIdentityAlpha);
-            return Start("chip-lock-app", 50, 5561, "/tmp/chip_kvs_lock");
+            return Start(1111, 5560, "/tmp/chip_kvs_default", "default");
         }
         case 11: {
-            LogStep(11, "Commission second accessory from alpha");
+            LogStep(11, "Start a second accessory with all command line options");
+            SetIdentity(kIdentityAlpha);
+            return Start(50, 5561, "/tmp/chip_kvs_lock", "chip-lock-app");
+        }
+        case 12: {
+            LogStep(12, "Commission second accessory from alpha");
             SetIdentity(kIdentityAlpha);
             return PairWithQRCode(
                 3735928559, mPayload.HasValue() ? mPayload.Value() : chip::CharSpan::fromCharString("MT:-24J0IX4122-.548G00"));
         }
-        case 12: {
-            LogStep(12, "Wait for the second commissioned device to be retrieved for alpha");
+        case 13: {
+            LogStep(13, "Wait for the second commissioned device to be retrieved for alpha");
             SetIdentity(kIdentityAlpha);
             return WaitForCommissionee(3735928559);
         }
-        case 13: {
-            LogStep(13, "Reboot the default accessory with no command line options");
+        case 14: {
+            LogStep(14, "Stop the second accessory");
+            SetIdentity(kIdentityAlpha);
+            return Stop("chip-lock-app");
+        }
+        case 15: {
+            LogStep(15, "Start a second accessory with diff KVS");
+            SetIdentity(kIdentityAlpha);
+            return Start(50, 5561, "/tmp/chip_kvs_lock2", "chip-lock-app");
+        }
+        case 16: {
+            LogStep(16, "Reboot the default accessory");
+            SetIdentity(kIdentityAlpha);
+            return Reboot();
+        }
+        case 17: {
+            LogStep(17, "Reboot the default accessory by key");
             SetIdentity(kIdentityAlpha);
             return Reboot("default");
         }
-        case 14: {
-            LogStep(14, "Reboot the default accessory with discriminator command line option");
-            SetIdentity(kIdentityAlpha);
-            return Reboot("default", 2222);
-        }
-        case 15: {
-            LogStep(15, "Reboot the default accessory with discriminator and port command line options");
-            SetIdentity(kIdentityAlpha);
-            return Reboot("default", 2222, 5565);
-        }
-        case 16: {
-            LogStep(16, "Reboot the default accessory with all command line options");
-            SetIdentity(kIdentityAlpha);
-            return Reboot("default", 2222, 5565, "/tmp/chip_kvs_default");
-        }
-        case 17: {
-            LogStep(17, "Reboot the second accessory with all command line options");
-            SetIdentity(kIdentityAlpha);
-            return Reboot("chip-lock-app", 50, 5561, "/tmp/chip_kvs_lock");
-        }
         case 18: {
-            LogStep(18, "Factory Reset the default accessory");
+            LogStep(18, "Reboot the second accessory");
+            SetIdentity(kIdentityAlpha);
+            return Reboot("chip-lock-app");
+        }
+        case 19: {
+            LogStep(19, "Factory Reset the default accessory");
+            SetIdentity(kIdentityAlpha);
+            return FactoryReset();
+        }
+        case 20: {
+            LogStep(20, "Factory Reset the default accessory by key");
             SetIdentity(kIdentityAlpha);
             return FactoryReset("default");
         }
-        case 19: {
-            LogStep(19, "Factory Reset the second accessory");
+        case 21: {
+            LogStep(21, "Factory Reset the second accessory");
             SetIdentity(kIdentityAlpha);
             return FactoryReset("chip-lock-app");
         }
@@ -43873,7 +43879,6 @@ public:
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("cluster", &mCluster);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
 
@@ -43888,7 +43893,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId;
     chip::Optional<chip::CharSpan> mCluster;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<uint16_t> mTimeout;
 
     chip::EndpointId GetEndpoint(chip::EndpointId endpoint) { return mEndpoint.HasValue() ? mEndpoint.Value() : endpoint; }
@@ -44019,7 +44023,7 @@ private:
         case 4: {
             LogStep(4, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 5: {
             LogStep(5, "Wait for the commissioned device to be retrieved");
@@ -44042,8 +44046,6 @@ public:
     {
         AddArgument("nodeId", 0, UINT64_MAX, &mNodeId);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
-        AddArgument("payload", &mPayload);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
 
@@ -44057,8 +44059,6 @@ public:
 private:
     chip::Optional<chip::NodeId> mNodeId;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
-    chip::Optional<chip::CharSpan> mPayload;
     chip::Optional<uint16_t> mTimeout;
 
     chip::EndpointId GetEndpoint(chip::EndpointId endpoint) { return mEndpoint.HasValue() ? mEndpoint.Value() : endpoint; }
@@ -44131,7 +44131,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 1: {
             LogStep(1, "Wait for the alpha device to be retrieved ");
@@ -44170,7 +44170,6 @@ public:
         AddArgument("nodeId2", 0, UINT64_MAX, &mNodeId2);
         AddArgument("nodeId3", 0, UINT64_MAX, &mNodeId3);
         AddArgument("endpoint", 0, UINT16_MAX, &mEndpoint);
-        AddArgument("discriminator", 0, UINT16_MAX, &mDiscriminator);
         AddArgument("payload", &mPayload);
         AddArgument("timeout", 0, UINT16_MAX, &mTimeout);
     }
@@ -44195,7 +44194,6 @@ private:
     chip::Optional<chip::NodeId> mNodeId2;
     chip::Optional<chip::NodeId> mNodeId3;
     chip::Optional<chip::EndpointId> mEndpoint;
-    chip::Optional<uint16_t> mDiscriminator;
     chip::Optional<chip::CharSpan> mPayload;
     chip::Optional<uint16_t> mTimeout;
 
@@ -44322,7 +44320,7 @@ private:
         case 0: {
             LogStep(0, "Reboot target device");
             SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
+            return Reboot();
         }
         case 1: {
             LogStep(1, "Wait for the commissioned device to be retrieved for alpha");
@@ -55177,117 +55175,6 @@ private:
         using namespace chip::app::Clusters;
         switch (testIndex)
         {
-        case 0: {
-            LogStep(0, "Reboot target device");
-            SetIdentity(kIdentityAlpha);
-            return Reboot("default", mDiscriminator.HasValue() ? mDiscriminator.Value() : 3840U, 5540, "/tmp/chip_kvs_default");
-        }
-        case 1: {
-            LogStep(1, "TH_CR1 starts a commissioning process with DUT_CE");
-            SetIdentity(kIdentityAlpha);
-            return WaitForCommissionee(1);
-        }
-        case 2: {
-            LogStep(2, "Open Commissioning Window with too-short timeout");
-            chip::app::Clusters::AdministratorCommissioning::Commands::OpenCommissioningWindow::Type value;
-            value.commissioningTimeout = 120U;
-            value.PAKEVerifier         = chip::ByteSpan(
-                chip::Uint8::from_const_char("\006\307V\337\374\327\042e4R\241-\315\224]\214T\332+\017<\275\033M\303\361\255\262#"
-                                             "\256\262k\004|\322L\226\206o\227\233\035\203\354P\342\264\2560\315\362\375\263+"
-                                             "\330\242\021\2707\334\224\355\315V\364\321Cw\031\020v\277\305\235\231\267\3350S\357"
-                                             "\326\360,D4\362\275\322z\244\371\316\247\015s\216Lgarbage: not in length on purpose"),
-                97);
-            value.discriminator = 3840U;
-            value.iterations    = 1000UL;
-            value.salt = chip::ByteSpan(chip::Uint8::from_const_char("SPAKE2P Key Saltgarbage: not in length on purpose"), 16);
-            return SendCommand(kIdentityAlpha, GetEndpoint(0), AdministratorCommissioning::Id,
-                               AdministratorCommissioning::Commands::OpenCommissioningWindow::Id, value,
-                               chip::Optional<uint16_t>(10000));
-        }
-        case 3: {
-            LogStep(3, "Open Commissioning Window with too-long timeout");
-            chip::app::Clusters::AdministratorCommissioning::Commands::OpenCommissioningWindow::Type value;
-            value.commissioningTimeout = 1000U;
-            value.PAKEVerifier         = chip::ByteSpan(
-                chip::Uint8::from_const_char("\006\307V\337\374\327\042e4R\241-\315\224]\214T\332+\017<\275\033M\303\361\255\262#"
-                                             "\256\262k\004|\322L\226\206o\227\233\035\203\354P\342\264\2560\315\362\375\263+"
-                                             "\330\242\021\2707\334\224\355\315V\364\321Cw\031\020v\277\305\235\231\267\3350S\357"
-                                             "\326\360,D4\362\275\322z\244\371\316\247\015s\216Lgarbage: not in length on purpose"),
-                97);
-            value.discriminator = 3840U;
-            value.iterations    = 1000UL;
-            value.salt = chip::ByteSpan(chip::Uint8::from_const_char("SPAKE2P Key Saltgarbage: not in length on purpose"), 16);
-            return SendCommand(kIdentityAlpha, GetEndpoint(0), AdministratorCommissioning::Id,
-                               AdministratorCommissioning::Commands::OpenCommissioningWindow::Id, value,
-                               chip::Optional<uint16_t>(10000));
-        }
-        case 4: {
-            LogStep(4, "Open Commissioning Window");
-            chip::app::Clusters::AdministratorCommissioning::Commands::OpenCommissioningWindow::Type value;
-            value.commissioningTimeout = 180U;
-            value.PAKEVerifier         = chip::ByteSpan(
-                chip::Uint8::from_const_char("\006\307V\337\374\327\042e4R\241-\315\224]\214T\332+\017<\275\033M\303\361\255\262#"
-                                             "\256\262k\004|\322L\226\206o\227\233\035\203\354P\342\264\2560\315\362\375\263+"
-                                             "\330\242\021\2707\334\224\355\315V\364\321Cw\031\020v\277\305\235\231\267\3350S\357"
-                                             "\326\360,D4\362\275\322z\244\371\316\247\015s\216Lgarbage: not in length on purpose"),
-                97);
-            value.discriminator = 3840U;
-            value.iterations    = 1000UL;
-            value.salt = chip::ByteSpan(chip::Uint8::from_const_char("SPAKE2P Key Saltgarbage: not in length on purpose"), 16);
-            return SendCommand(kIdentityAlpha, GetEndpoint(0), AdministratorCommissioning::Id,
-                               AdministratorCommissioning::Commands::OpenCommissioningWindow::Id, value,
-                               chip::Optional<uint16_t>(10000));
-        }
-        case 5: {
-            LogStep(5, "TH_CR1 writes the Basic Information Clusters NodeLabel mandatory attribute of DUT_CE");
-            chip::CharSpan value;
-            value = chip::Span<const char>("chiptestgarbage: not in length on purpose", 8);
-            return WriteAttribute(kIdentityAlpha, GetEndpoint(0), Basic::Id, Basic::Attributes::NodeLabel::Id, value);
-        }
-        case 6: {
-            LogStep(6, "TH_CR1 reads the Basic Information Clusters NodeLabel mandatory attribute of DUT_CE");
-            return ReadAttribute(kIdentityAlpha, GetEndpoint(0), Basic::Id, Basic::Attributes::NodeLabel::Id);
-        }
-        case 7: {
-            LogStep(7, "Commission from beta");
-            SetIdentity(kIdentityBeta);
-            return PairWithQRCode(
-                1, mPayload.HasValue() ? mPayload.Value() : chip::CharSpan::fromCharString("MT:0000000000I31506010"));
-        }
-        case 8: {
-            LogStep(8, "TH_CR2 starts a commissioning process with DUT_CE");
-            SetIdentity(kIdentityBeta);
-            return WaitForCommissionee(1);
-        }
-        case 9: {
-            LogStep(9, "Query fabrics list");
-            return ReadAttribute(kIdentityAlpha, GetEndpoint(0), OperationalCredentials::Id,
-                                 OperationalCredentials::Attributes::Fabrics::Id);
-        }
-        case 10: {
-            LogStep(10, "Query fabrics list");
-            return ReadAttribute(kIdentityBeta, GetEndpoint(0), OperationalCredentials::Id,
-                                 OperationalCredentials::Attributes::Fabrics::Id, false);
-        }
-        case 11: {
-            LogStep(11, "TH_CR1 writes the Basic Information Clusters NodeLabel mandatory attribute of DUT_CE");
-            chip::CharSpan value;
-            value = chip::Span<const char>("chiptest1garbage: not in length on purpose", 9);
-            return WriteAttribute(kIdentityAlpha, GetEndpoint(0), Basic::Id, Basic::Attributes::NodeLabel::Id, value);
-        }
-        case 12: {
-            LogStep(12, "TH_CR1 reads the Basic Information Clusters NodeLabel mandatory attribute of DUT_CE");
-            return ReadAttribute(kIdentityAlpha, GetEndpoint(0), Basic::Id, Basic::Attributes::NodeLabel::Id);
-        }
-        case 13: {
-            LogStep(13, "TH_CR2 writes the Basic Information Clusters NodeLabel mandatory attribute of DUT_CE");
-            chip::CharSpan value;
-            value = chip::Span<const char>("chiptest2garbage: not in length on purpose", 9);
-            return WriteAttribute(kIdentityBeta, GetEndpoint(0), Basic::Id, Basic::Attributes::NodeLabel::Id, value);
-        }
-        case 14: {
-            LogStep(14, "TH_CR2 reads the Basic Information Clusters NodeLabel mandatory attribute of DUT_CE");
-            return ReadAttribute(kIdentityBeta, GetEndpoint(0), Basic::Id, Basic::Attributes::NodeLabel::Id);
         }
         return CHIP_NO_ERROR;
     }
