@@ -239,11 +239,13 @@ class TestDefinition:
                 if path == target_app:
                     key = 'default'
                 else:
-                    key = os.path.basename(path[0])
+                    key = os.path.basename(path[-1])
 
                 app = App(runner, path)
                 # Add the App to the register immediately, so if it fails during
                 # start() we will be able to clean things up properly.
+                logging.error('!!! Adding app to register with key: %s' % key)
+                logging.error('!!! The original path before basename is taken: %s' % path)
                 apps_register.add(key, app)
                 # Remove server application storage (factory reset),
                 # so it will be commissionable again.

@@ -62,6 +62,10 @@ class AppsRegister:
             accessory.kill()
 
     def start(self, name, args):
+        logging.error('!!! In accessories.py start, name = %s' % name)
+        logging.error('!!! Printing all keys in self.__accessories:')
+        for key in self.__accessories:
+            logging.error('   !!! key = %s' % key)
         accessory = self.__accessories[name]
         if accessory:
             # The args param comes directly from the sys.argv[1:] of Start.py and should contain a list of strings in
